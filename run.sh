@@ -595,6 +595,22 @@ run_clojure() {
         check_output "related_posts_clj.json"
 }
 
+run_techascent() {
+    echo "Running Techascent (ham-fisted)" &&
+        cd ./techascent &&
+        clj -T:build uber &&
+        run_command "Techascent" $runs java -jar ./target/related.jar &&
+        check_output "related_posts_techascent.json"
+}
+
+run_techascent_concurrent() {
+    echo "Running Techascent Concurrent" &&
+        cd ./techascent_con &&
+        clj -T:build uber &&
+        run_command "Techascent Concurrent" $runs java -jar ./target/related.jar &&
+        check_output "related_posts_techascent_con.json"
+}
+
 run_ruby() {
     echo "Running ruby" &&
         cd ./ruby &&
@@ -931,6 +947,14 @@ elif [ "$first_arg" = "cl" ]; then
 elif [ "$first_arg" = "clj" ]; then
 
     run_clojure
+
+elif [ "$first_arg" = "techascent" ]; then
+
+    run_techascent
+
+elif [ "$first_arg" = "techascent_con" ]; then
+
+    run_techascent_concurrent
 
 elif [ "$first_arg" = "ruby" ]; then
 

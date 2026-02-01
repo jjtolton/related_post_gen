@@ -44,6 +44,12 @@ clojure/.*iml
 clojure/related.iml
 clojure/.nrepl-port
 
+# Techascent
+techascent/.cpcache
+techascent/target
+techascent_con/.cpcache
+techascent_con/target
+
 .fake
 cpp/main
 
